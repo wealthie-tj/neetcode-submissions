@@ -1,0 +1,23 @@
+class Solution:
+    def calPoints(self, operations: List[str]) -> int:
+        test = '-2'
+        print(test.isdigit())
+
+        ops = ['+', 'C', 'D']
+
+        record = []
+        for op in operations:
+            if op not in ops:
+                record.append(int(op))
+            elif op=='+':
+                numA = record[-1]
+                numB = record[-2]
+                res = numA + numB
+                record.append(res)
+            elif op=='C':
+                record.pop()
+            elif op=='D':
+                res = record[-1] * 2
+                record.append(res)
+        
+        return sum(record)
